@@ -1,5 +1,6 @@
 ﻿double notaUm, notaDois, notaTres, notaQuatro, media;
 string resultado;
+ConsoleColor corResultado;
 
 Console.Clear();
 Console.WriteLine("-- Média --");
@@ -28,16 +29,22 @@ else
     
     if (media < 5.0)
     {
+        corResultado = ConsoleColor.Red;
         resultado = "Reprovado";
     }
     else if (media < 6.0)
     {
+        corResultado = ConsoleColor.Yellow;
         resultado = "Em recuperação";
     }
     else
     {
+        corResultado = ConsoleColor.Green;
         resultado = "Aprovado";
     }
 
-    Console.WriteLine($"\nVocê ficou com média {media:N1}. Resultado: {resultado}");
+    Console.Write($"\nVocê ficou com média {media:N1}. Resultado: ");
+    Console.ForegroundColor = corResultado;
+    Console.WriteLine($"{resultado}");
+    Console.ResetColor();
 }
